@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Menu Makanan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #622b76;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .highlight {
+            background-color: #aa80cf;
+            font-weight: bold;
+        }
+       
+        
+    </style>
+</head>
+<body>
+
+    <h2>🥄Daftar Menu Makanan & Minuman</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Kategori</th>
+                <th>Nama Menu</th>
+                <th>Ukuran</th>
+                <th>Harga</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                
+                <td rowspan="2">Makanan</td>
+                <td>Nasi Goreng Spesial</td>
+                <td>Reguler</td>
+                <td>Rp 25.000</td>
+            </tr>
+            <tr>
+                <td>Mie Ayam Bakso</td>
+                <td>Jumbo</td>
+                <td>Rp 22.000</td>
+            </tr>
+            <tr>
+                
+                <td rowspan="2">Minuman</td>
+                <td>Es Teh Manis</td>
+                <td>Standar</td>
+                <td>Rp 5.000</td>
+            </tr>
+            <tr>
+                <td>Jus Alpukat</td>
+                <td>Besar</td>
+                <td>Rp 15.000</td>
+            </tr>
+            <tr class="highlight">
+                
+                <td colspan="4">Diskon 10% untuk pembelian di atas Rp 50.000!</td>
+            </tr>
+            <tr>
+                <td colspan="4">Diskon 20% untuk pelanggan baru</td>
+            </tr>
+            <tr class="highlight">
+                
+        </body>
+    </table>
+
+</body>
+</html>
