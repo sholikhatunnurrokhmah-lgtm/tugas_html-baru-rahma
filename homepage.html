@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+ <html lang="id">
+ <head>
+     <meta charset="UTF-8">
+     <title>Website Saya</title>
+     <style>
+         * {
+             margin: 0;
+             padding: 0;
+             box-sizing: border-box;
+             font-family: Arial, sans-serif;
+         }
+         body {
+             background: #f4f4f4;
+         }
+         /* ============= MENU ATAS YANG DIPERINDAH ============= */
+         .navbar {
+             background: linear-gradient(90deg, #2c3e50, #34495e);
+             overflow: hidden;
+             position: sticky;
+             top: 0;
+             z-index: 100;
+             box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+         }
+         .navbar a {
+             float: left;
+             display: block;
+             color: #ffffff;
+             padding: 16px 22px;
+             text-decoration: none;
+             font-size: 15px;
+             transition: all 0.3s ease;
+             border-bottom: 3px solid transparent;
+         }
+         .navbar a:hover {
+             background: rgba(52, 152, 219, 0.2);
+             color: #3498db;
+             border-bottom: 3px solid #3498db;
+         }
+         .navbar a.active {
+             background: #3498db;
+             border-bottom: 3px solid #2980b9;
+         }
+         /* ===================================================== */
+         .page {
+             display: none;
+             padding: 30px;
+             max-width: 900px;
+             margin: 20px auto;
+             background: white;
+             min-height: calc(100vh - 80px);
+             border-radius: 8px;
+             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+         }
+         .page.active {
+             display: block;
+         }
+         h1 {
+             color: #2c3e50;
+             margin-bottom: 20px;
+             border-bottom: 2px solid #3498db;
+             padding-bottom: 10px;
+         }
+         p {
+             line-height: 1.8;
+             color: #555;
+             margin-bottom: 15px;
+         }
+     </style>
+ </head>
+ <body>
+     <!-- ============= MENU ATAS ============= -->
+     <div class="navbar">
+         <a href="#" class="active" onclick="bukaHalaman('beranda'); return false;">🏠 Beranda</a>
+         <a href="#" onclick="bukaHalaman('profil'); return false;">👤 Profil</a>
+         <a href="#" onclick="bukaHalaman('tentang'); return false;">📖 Tentang</a>
+         <a href="#" onclick="bukaHalaman('layanan'); return false;">⚙️ Layanan</a>
+         <a href="#" onclick="bukaHalaman('galeri'); return false;">🖼️ Galeri</a>
+         <a href="#" onclick="bukaHalaman('kontak'); return false;">📞 Kontak</a>
+     </div>
+     <!-- ============= HALAMAN 1: BERANDA ============= -->
+     <div class="page active" id="beranda">
+         <h1>🏠 Beranda</h1>
+         <p>Selamat datang di website saya! 👋</p>
+         <p>wabsite ini berisi informasi tentang biodata saya, ini merupakan tugas homepage dari bu sevy cantikkk</p>
+         <p>selamat membaca📒</p>
+     </div>
+     <!-- ============= HALAMAN 2: PROFIL ============= -->
+     <div class="page" id="profil">
+         <h1>👤 Profil</h1>
+         <p><strong>Nama:</strong> Sholikhatun Nur Rokhmah (Rahma)</p>
+         <p><strong>Kelas:</strong> XB </p>
+         <p><strong>Sekolah:</strong> SMK Telekomunikasi Tunas Harapan </p>
+         <p><strong>Hobi:</strong> scroll, rebahan, dan jajan</p>
+     </div>
+     <!-- ============= HALAMAN 3: TENTANG ============= -->
+     <div class="page" id="tentang">
+         <h1>📖 Tentang</h1>
+         <p>Website ini dibuat untuk memenuhi tugas mata pelajaran Informatika.</p>
+         <p>Dibuat pada 21 oktober 2026</p>
+     </div>
+     <!-- ============= HALAMAN 4: LAYANAN ============= -->
+     <div class="page" id="layanan">
+         <h1>tentang jurusan</h1>
+         <p>✅ Belajar Dasar Pemrograman</p>
+         <p>✅ Membuat Halaman Web</p>
+         <p>✅ Belajar Logika Pemrograman</p>
+     </div>
+     <!-- ============= HALAMAN 5: GALERI ============= -->
+     <div class="page" id="galeri">
+         <h1>🖼️ Galeri</h1>
+         <p> <img src="kegiatan.jpeg" alt="📸 Foto Kegiatan Sekolah"></p>
+         <p> <img src="hasil.jpeg" alt="🎨 Hasil Karya"></p>
+         <p> <img src="rahma.jpeg" alt="😇 sayaa"></p>
+     </div>
+     <!-- ============= HALAMAN 6: KONTAK ============= -->
+     <div class="page" id="kontak">
+         <h1>📞 Kontak</h1>
+         <p>📧 Email: sholikhatunurrokhmah@gmail.com</p>
+         <p>📱 WhatsApp: 0856-0296-7944</p>
+         <p>🏙️ Kota: Salatiga </p>
+     </div>
+     <script>
+         function bukaHalaman(nama) {
+             // Sembunyikan semua halaman
+             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+             // Tampilkan halaman yang dipilih
+             document.getElementById(nama).classList.add('active');
+             
+             // Update status menu aktif
+             document.querySelectorAll('.navbar a').forEach(a => a.classList.remove('active'));
+             event.target.classList.add('active');
+         }
+     </script>
+ </body>
+ </html>
