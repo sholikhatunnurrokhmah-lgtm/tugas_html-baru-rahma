@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="utf-8">
+        <title>Tutorial Paragraf Lucu di HTML 👾</title>
+        <style>
+            /* Menggunakan warna background bgcolor pilihanmu (CBA2C8 - Lilac) */
+            body {
+                font-family: 'Comic Sans MS', 'Chalkboard SE', 'Fredoka', cursive, sans-serif;
+                background-color: #CBA2C8;
+                min-height: 100vh;
+                margin: 0;
+                padding: 40px 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 25px;
+                box-sizing: border-box;
+            }
+
+            /* Kartu Paragraf Lucu */
+            .cute-card {
+                background-color: #ffffff;
+                padding: 30px;
+                border-radius: 25px;
+                border: 3.5px solid #4a2840;
+                box-shadow: 6px 6px 0px #4a2840;
+                max-width: 460px;
+                position: relative;
+                transition: all 0.3s ease;
+            }
+
+            /* Efek saat mouse mendekat */
+            .cute-card:hover {
+                transform: translateY(-5px) rotate(1deg);
+                box-shadow: 10px 10px 0px #ff9ff3;
+            }
+
+            /* Stiker Emoji yang Memantul */
+            .sticker {
+                position: absolute;
+                top: -20px;
+                right: 20px;
+                background-color: #feca57;
+                border: 2px solid #4a2840;
+                padding: 4px 12px;
+                border-radius: 15px;
+                font-size: 0.9rem;
+                font-weight: bold;
+            }
+
+            /* Gaya Teks Paragraf */
+            .cute-card p {
+                color: #2d3436;
+                font-size: 1.1rem;
+                line-height: 1.8;
+                text-align: justify;
+                text-indent: 30px; /* Lekukan paragraf */
+                margin: 0;
+            }
+
+            /* Huruf awal yang besar dan berwarna lucu */
+            .cute-card p::first-letter {
+                font-size: 2.2rem;
+                font-weight: bold;
+                color: #ff6b6b;
+                float: left;
+                line-height: 1;
+                margin-right: 8px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="cute-card">
+            <span class="sticker">Bab 1: Robot & Kopi ☕</span>
+            <p>
+                Ini adalah petualangan pertamaku di dunia teknologi yang sangat ajaib! Saat ini, aku sedang sibuk mengutak-atik HTML demi bisa membuat halaman web yang super cantik, lucu, dan bikin siapa saja yang melihatnya jadi terpesona.
+            </p>
+        </div>
+
+        <div class="cute-card">
+            <span class="sticker">Bab 2: Mantra HTML 🪄</span>
+            <p>
+                Tahu tidak? HTML itu sebenarnya mantra dasar yang dipakai para penyihir koding untuk membangun pondasi website. Dengan rajin mempelajari HTML, kita bisa menyusun tampilan web yang super rapi, gemas, dan pastinya sangat mudah dipahami!
+            </p>
+        </div>
+
+    </body>
+</html>

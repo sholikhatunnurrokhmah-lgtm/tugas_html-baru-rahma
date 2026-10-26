@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sistem Monitoring Suhu Server</title>
+</head>
+
+<body>
+
+    <h1>Sistem Monitoring Suhu Server</h1>
+
+    <label>Masukkan Suhu Server (°C): </label>
+    <input type="number" id="suhu" placeholder="Contoh: 36">
+
+    <button onclick="cekSuhu()">Cek Status</button>
+
+    <p id="hasil"></p>
+
+    <script>
+        function cekSuhu() {
+            let suhu = document.getElementById("suhu").value;
+            let hasil = document.getElementById("hasil");
+
+            if (suhu == "") {
+                hasil.innerHTML = "Masukkan suhu terlebih dahulu.";
+            } 
+            else if (suhu < 30) {
+                hasil.innerHTML = "Status: Dingin";
+            } 
+            else if (suhu <= 35) {
+                hasil.innerHTML = "Status: Normal";
+            } 
+            else if (suhu <= 40) {
+                hasil.innerHTML = "Status: Panas";
+            } 
+            else {
+                hasil.innerHTML = "Status: Sangat Panas";
+            }
+        }
+    </script>
+
+</body>
+</html>

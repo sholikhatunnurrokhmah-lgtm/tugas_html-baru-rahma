@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <title>Tutorial Paragraf Lucu di HTML #2 🎈</title>
+    <style>
+        /* Mengatur latar belakang yang ceria dan segar */
+        body {
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Fredoka', cursive, sans-serif;
+            background-color: #e0f7fa;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            box-sizing: border-box;
+        }
+
+        /* Gaya umum untuk gelembung paragraf */
+        .bubble-card {
+            background-color: #ffffff;
+            padding: 25px 30px;
+            border-radius: 25px;
+            border: 3px solid #000000;
+            box-shadow: 6px 6px 0px #000000;
+            max-width: 480px;
+            position: relative;
+            transition: transform 0.2s ease;
+        }
+
+        .bubble-card:hover {
+            transform: scale(1.03) rotate(-1deg);
+        }
+
+        /* Paragraf Pertama: Warna Toska (Teal) */
+        .bubble-teal {
+            border-color: #008080;
+            box-shadow: 6px 6px 0px #008080;
+        }
+
+        .bubble-teal p {
+            color: #006666;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            text-align: center; /* Menjaga posisi teks tetap di tengah */
+            margin: 0;
+        }
+
+        /* Paragraf Kedua: Warna Ungu (Purple) */
+        .bubble-purple {
+            border-color: #6f00ff;
+            box-shadow: 6px 6px 0px #6f00ff;
+        }
+
+        .bubble-purple p {
+            color: #4b0082;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            text-align: justify; /* Rata kanan-kiri agar seperti paragraf novel */
+            text-indent: 25px;   /* Lekukan di awal paragraf */
+            margin: 0;
+        }
+
+        /* Label/Stiker Lucu di Atas Kotak */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+            color: white;
+        }
+
+        .badge-teal { background-color: #008080; }
+        .badge-purple { background-color: #6f00ff; }
+    </style>
+</head>
+<body>
+
+    <div class="bubble-card bubble-teal">
+        <span class="badge badge-teal"> Misi Pertama! 🚀</span>
+        <p>
+            Selamat datang di dunia ajaib tempat belajar HTML! Di sini, saya sedang giat-giatnya berlatih merangkai kata demi kata, mengatur posisi teks ke tengah, dan membuat tampilannya jadi super gemas serta sedap dipandang mata.
+        </p>
+    </div>
+
+    <div class="bubble-card bubble-purple">
+        <span class="badge badge-purple"> Rahasia HTML 🤫</span>
+        <p>
+            Tahu tidak? HTML itu ibarat fondasi rumah impian kita di internet. Dengan memahami cara kerjanya, kita bisa menyusun isi website dengan sangat rapi, menarik, dan pastinya seru banget buat dipelajari setiap hari!
+        </p>
+    </div>
+
+</body>
+</html>

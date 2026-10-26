@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petualangan Kutub Malam & HTML</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #0f172a;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Efek Salju */
+        .snow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: #ffffff;
+            font-size: 1em;
+            user-select: none;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(105vh);
+            }
+        }
+
+        /* Halaman Luar - Langit Malam & Aurora */
+        #outdoor-scene {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(180deg, #020617 0%, #0f172a 60%, #1e1b4b 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Effect Aurora Borealis */
+        .aurora {
+            position: absolute;
+            top: 0;
+            left: -20%;
+            width: 140%;
+            height: 50%;
+            background: linear-gradient(90deg, rgba(56, 189, 248, 0) 0%, rgba(52, 211, 153, 0.4) 35%, rgba(168, 85, 247, 0.4) 65%, rgba(56, 189, 248, 0) 100%);
+            filter: blur(40px);
+            opacity: 0.8;
+            animation: aurora-wave 8s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes aurora-wave {
+            0% { transform: translateY(-10px) skewY(-2deg) scaleY(1); }
+            100% { transform: translateY(20px) skewY(2deg) scaleY(1.2); }
+        }
+
+        .instruction {
+            position: absolute;
+            top: 30px;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            color: #38bdf8;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+            z-index: 5;
+            letter-spacing: 0.5px;
+        }
+
+        .snow-hill {
+            position: absolute;
+            bottom: 0;
+            width: 120%;
+            height: 250px;
+            background: linear-gradient(180deg, #cbd5e1 0%, #f8fafc 100%);
+            border-radius: 50% 50% 0 0;
+            box-shadow: 0 -10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Igloo Neon Glow Style */
+        .igloo {
+            position: relative;
+            width: 250px;
+            height: 145px;
+            background: linear-gradient(180deg, #e2e8f0 0%, #94a3b8 100%);
+            border-radius: 150px 150px 0 0;
+            border: 3px solid #38bdf8;
+            cursor: pointer;
+            z-index: 2;
+            margin-bottom: 50px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.3), inset -15px -15px 20px rgba(15, 23, 42, 0.3);
+        }
+
+        .igloo:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 0 35px rgba(56, 189, 248, 0.6), inset -15px -15px 20px rgba(15, 23, 42, 0.2);
+        }
+
+        .igloo-door-frame {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 75px;
+            height: 95px;
+            background: #475569;
+            border: 2px solid #38bdf8;
+            border-radius: 40px 40px 0 0;
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .igloo-door {
+            width: 55px;
+            height: 80px;
+            background: linear-gradient(180deg, #0ea5e9 0%, #0284c7 100%);
+            border-radius: 30px 30px 0 0;
+            transition: background 0.3s, filter 0.3s;
+        }
+
+        .igloo-door-frame:hover .igloo-door {
+            background: linear-gradient(180deg, #38bdf8 0%, #0ea5e9 100%);
+            filter: drop-shadow(0 0 8px #38bdf8);
+        }
+
+        /* Pinguin Stylized */
+        .penguin {
+            position: absolute;
+            width: 42px;
+            height: 52px;
+            background: #0f172a;
+            border-radius: 22px 22px 15px 15px;
+            z-index: 3;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .penguin::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 8px;
+            width: 26px;
+            height: 36px;
+            background: #f8fafc;
+            border-radius: 13px 13px 11px 11px;
+        }
+
+        .penguin::after {
+            content: '';
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            width: 6px;
+            height: 6px;
+            background: #f97316;
+            border-radius: 50%;
+            box-shadow: 0 0 5px #f97316;
+        }
+
+        .p1 { bottom: 60px; left: 15%; }
+        .p2 { bottom: 85px; left: 25%; }
+        .p3 { bottom: 55px; right: 20%; }
+        .p4 { bottom: 95px; right: 30%; }
+
+        /* Halaman Dalam - Cozy Warm Room */
+        #indoor-scene {
+            display: none;
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: #090d16;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .room {
+            position: relative;
+            width: 850px;
+            height: 480px;
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+            border: 8px solid #334155;
+            border-radius: 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            padding: 25px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7), 0 0 30px rgba(56, 189, 248, 0.1);
+        }
+
+        /* Kasur */
+        .bed {
+            width: 150px;
+            height: 75px;
+            background: linear-gradient(180deg, #ef4444 0%, #b91c1c 100%);
+            border-radius: 12px 12px 0 0;
+            position: relative;
+            border-bottom: 12px solid #78350f;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        .pillow {
+            position: absolute;
+            top: 10px;
+            left: 12px;
+            width: 40px;
+            height: 25px;
+            background: #f8fafc;
+            border-radius: 6px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Perapian Modern / Furnace Glow */
+        .furnace {
+            width: 90px;
+            height: 110px;
+            background: #1e1b4b;
+            border: 2px solid #4338ca;
+            border-radius: 8px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 12px;
+            box-shadow: 0 0 25px rgba(249, 115, 22, 0.3);
+        }
+
+        .fire {
+            width: 45px;
+            height: 35px;
+            background: linear-gradient(180deg, #fbbf24 0%, #f97316 50%, #dc2626 100%);
+            border-radius: 50% 50% 0 0;
+            box-shadow: 0 0 25px #f97316, 0 0 40px #ef4444;
+            animation: burn 0.4s infinite alternate ease-in-out;
+        }
+
+        @keyframes burn {
+            from { transform: scale(0.92); opacity: 0.85; }
+            to { transform: scale(1.08); opacity: 1; }
+        }
+
+        /* Meja & Komputer Cyber CRT */
+        .desk {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .desk:hover {
+            transform: scale(1.03);
+        }
+
+        .crt-monitor {
+            width: 170px;
+            height: 140px;
+            background: #334155;
+            border: 4px solid #475569;
+            border-radius: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5), 0 0 15px rgba(56, 189, 248, 0.2);
+        }
+
+        .crt-screen {
+            width: 130px;
+            height: 95px;
+            background: #0284c7;
+            border-radius: 10px;
+            border: 3px solid #0f172a;
+            box-shadow: inset 0 0 15px rgba(255,255,255,0.4);
+            animation: pulse-screen 2s infinite alternate;
+        }
+
+        @keyframes pulse-screen {
+            from { box-shadow: inset 0 0 10px rgba(56, 189, 248, 0.5), 0 0 10px rgba(56, 189, 248, 0.3); }
+            to { box-shadow: inset 0 0 20px rgba(56, 189, 248, 0.8), 0 0 20px rgba(56, 189, 248, 0.6); }
+        }
+
+        .pc-case {
+            width: 150px;
+            height: 42px;
+            background: #334155;
+            margin-top: 6px;
+            border-radius: 6px;
+            border: 1px solid #475569;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .keyboard-mouse {
+            width: 160px;
+            height: 12px;
+            background: #1e293b;
+            margin-top: 6px;
+            border-radius: 3px;
+            border: 1px solid #38bdf8;
+        }
+
+        /* Popup Windows XP Sleek Retro Style */
+        #win-xp-screen {
+            display: none;
+            position: absolute;
+            width: 720px;
+            height: 460px;
+            background: #1e293b;
+            border: 3px solid #38bdf8;
+            border-radius: 12px;
+            z-index: 20;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.3);
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .win-header {
+            background: linear-gradient(90deg, #0284c7 0%, #0369a1 100%);
+            color: #ffffff;
+            padding: 8px 14px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            letter-spacing: 0.5px;
+        }
+
+        .win-close {
+            background: #ef4444;
+            color: white;
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            text-align: center;
+            line-height: 24px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .win-close:hover {
+            background: #dc2626;
+        }
+
+        .win-body {
+            background: #0f172a;
+            flex: 1;
+            margin: 12px;
+            padding: 22px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            overflow-y: auto;
+            color: #e2e8f0;
+        }
+
+        .win-body p {
+            margin-bottom: 16px;
+            line-height: 1.6;
+            font-size: 14.5px;
+        }
+
+        .win-body a {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px dashed #38bdf8;
+            transition: color 0.2s;
+        }
+
+        .win-body a:hover {
+            color: #7dd3fc;
+            border-bottom-style: solid;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Efek Salju -->
+    <div class="snow-container" id="snow"></div>
+
+    <!-- Halaman Luar: Malam Kutub & Aurora -->
+    <div id="outdoor-scene">
+        <div class="aurora"></div>
+        <div class="instruction" id="out-text">✨ Klik Iglo untuk melihat pintu!</div>
+        
+        <div class="igloo" id="igloo" onclick="showDoor()">
+            <div class="igloo-door-frame" id="door-frame" onclick="enterIgloo(event)">
+                <div class="igloo-door"></div>
+            </div>
+        </div>
+
+        <div class="penguin p1"></div>
+        <div class="penguin p2"></div>
+        <div class="penguin p3"></div>
+        <div class="penguin p4"></div>
+        <div class="snow-hill"></div>
+    </div>
+
+    <!-- Halaman Dalam: Ruangan Malam Igloo -->
+    <div id="indoor-scene">
+        <div class="instruction" id="in-text">🖥️ Klik Komputer Tua untuk menyalakan layar!</div>
+        
+        <div class="room">
+            <!-- Kasur Merah -->
+            <div class="bed">
+                <div class="pillow"></div>
+            </div>
+
+            <!-- Perapian -->
+            <div class="furnace">
+                <div class="fire"></div>
+            </div>
+
+            <!-- Komputer Retro -->
+            <div class="desk" onclick="openComputer()">
+                <div class="crt-monitor">
+                    <div class="crt-screen"></div>
+                </div>
+                <div class="pc-case"></div>
+                <div class="keyboard-mouse"></div>
+            </div>
+        </div>
+
+        <!-- Tampilan Layar Windows XP Cyber -->
+        <div id="win-xp-screen">
+            <div class="win-header">
+                <span>Catatan_Eksplorasi.exe - Arktik OS</span>
+                <div class="win-close" onclick="closeComputer(event)">X</div>
+            </div>
+            <div class="win-body">
+                <p>Kutub Utara adalah wilayah paling utara di Bumi yang didominasi oleh Samudra Arktik berpermukaan es tebal. Meskipun suhunya sangat ekstrem, kawasan ini menyimpan keindahan fenomena alam spektakuler seperti Aurora Borealis dan menjadi habitat penting bagi berbagai satwa langka. <a href="10B 5.HTML">Jelajahi Peta Arktik</a></p>
+                <p>Berbagai spesies fauna telah beradaptasi secara luar biasa untuk bertahan hidup di suhu minus derajat. Mulai dari beruang kutub berbulu tebal, rubah Arktik yang lincah, hingga penguin yang menggemaskan di wilayah sekitar perairan es, semuanya membentuk rantai makanan ekosistem es yang unik. <a href="10B 6.html">Lihat Satwa Kutub</a></p>
+                <p>Perubahan iklim global menjadi ancaman nyata bagi kestabilan lautan es di Kutub Utara. Memahami dan menjaga keseimbangan ekosistem ini merupakan langkah penting bagi kelangsungan hidup planet Bumi di masa depan. Anda dapat membaca laporan lengkapnya di <a href="10B 7.html">Jurnal Penelitian Kutub</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* Buat Salju */
+        const snowContainer = document.getElementById('snow');
+        for (let i = 0; i < 60; i++) {
+            const flake = document.createElement('div');
+            flake.className = 'snowflake';
+            flake.innerHTML = '❄';
+            flake.style.left = Math.random() * 100 + 'vw';
+            flake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            flake.style.opacity = Math.random();
+            flake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+            snowContainer.appendChild(flake);
+        }
+
+        /* Interaksi */
+        function showDoor() {
+            document.getElementById('door-frame').style.display = 'flex';
+            document.getElementById('out-text').innerText = '🚪 Klik Pintu untuk masuk!';
+        }
+
+        function enterIgloo(event) {
+            event.stopPropagation();
+            document.getElementById('outdoor-scene').style.display = 'none';
+            document.getElementById('indoor-scene').style.display = 'flex';
+        }
+
+        function openComputer() {
+            document.getElementById('win-xp-screen').style.display = 'flex';
+            document.getElementById('in-text').style.display = 'none';
+        }
+
+        function closeComputer(event) {
+            event.stopPropagation();
+            document.getElementById('win-xp-screen').style.display = 'none';
+            document.getElementById('in-text').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>  
+<html lang="id">  
+<head>  
+    <meta charset="utf-8">  
+    <title>Tutorial Paragraf Lucu HTML #3 📖</title>  
+    <style>
+        /* Mengatur latar belakang yang lembut dan nyaman di mata */
+        body {
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Fredoka', cursive, sans-serif;
+            background-color: #fff5f5;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Mengatur kotak dengan gaya buku cerita */
+        .story-box {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            border: 3px dashed #ff9ff3;
+            box-shadow: 0 10px 20px rgba(255, 159, 243, 0.3);
+            max-width: 480px;
+            position: relative;
+        }
+
+        /* Hiasan pin/stiker di pojok atas */
+        .pin {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ff6b6b;
+            color: white;
+            padding: 4px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* Mengatur tampilan paragraf agar mengalir seperti cerita */
+        .story-box p {
+            font-size: 1.1rem;
+            color: #485460;
+            line-height: 2;
+            text-align: justify;
+            margin: 0;
+            text-indent: 30px; /* Membuat huruf pertama di baris awal agak masuk ke dalam */
+        }
+
+        /* Membuat huruf pertama paragraf jadi besar (Drop Cap) */
+        .story-box p::first-letter {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            float: left;
+            line-height: 1;
+            margin-right: 8px;
+        }
+    </style>
+</head>  
+<body>  
+
+    <div class="story-box">
+        <div class="pin">Catatan Si Koding 🐾</div>
+        <p>
+            Setiap hari aku duduk manis di depan layar, mencoba merangkai kode-kode ajaib demi menciptakan program baru. Walaupun kadang membingungkan, aku yakin semakin banyak berlatih, semakin bertambah pula ilmuku. Jadi, aku akan tetap semangat, tersenyum lebar, dan terus belajar tanpa pernah mau menyerah! ✨
+        </p>
+    </div>
+
+</body>  
+</html>
